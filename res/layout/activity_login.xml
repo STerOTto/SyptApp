@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#e6e6e6"
+    android:orientation="vertical"
+    tools:context=".LoginActivity" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+		android:layout_gravity="center"
+        android:src="@drawable/sytp_login" />
+    <LinearLayout
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="220dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/fogetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/fogetPassword"
+            />
+
+        <TextView
+            android:id="@+id/visitorLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/visitorLogin"
+             />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="-250dp" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_userId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/studengtId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_up"
+                android:drawableLeft="@drawable/ww"
+                android:hint="@string/studengtId"
+                android:singleLine="true"
+                android:textColorHint="#999999" />         
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/passwordTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/relativeLayout_userId"
+            android:background="@drawable/edittext_down"
+            android:drawableLeft="@drawable/ww"
+            android:ems="10"
+            android:hint="@string/password"
+            android:password="true"
+            android:singleLine="true"
+            android:textColorHint="#999999" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+            android:background="@drawable/login_button_style" />
+    </RelativeLayout>
+
+</LinearLayout>

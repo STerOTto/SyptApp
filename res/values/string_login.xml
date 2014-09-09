@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The strings of activity_login are here  -->
+<resources>
+    <string name="fogetPassword">忘记密码？</string>
+    <string name="visitorLogin">游客登录</string>
+	<string name="studengtId">学号</string>
+	<string name="password">密码</string>
+</resources>
