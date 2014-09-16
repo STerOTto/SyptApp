@@ -141,6 +141,7 @@ public class AndroidToServer
 		if (null != JSESSIONID)
 		{
 			httpRequest.setHeader("Cookie", "JSESSIONID=" + JSESSIONID);
+			Log.i("JSESSIONID", JSESSIONID);
 		}
 		/* 发送请求并等待响应 */
 			httpClient = getHttpClient();
@@ -161,6 +162,7 @@ public class AndroidToServer
 				if ("JSESSIONID".equals(cookies.get(i).getName()))
 				{
 					JSESSIONID = cookies.get(i).getValue();
+					Log.i("JSESSIONID", JSESSIONID);
 					break;
 				}
 			}

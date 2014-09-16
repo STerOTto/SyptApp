@@ -12,6 +12,8 @@ import com.example.http.AndroidToServer;
 import com.google.gson.Gson;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -89,27 +91,10 @@ public class LoginActivity extends Activity implements OnClickListener
 		// Click events
 		switch (view.getId())
 		{
-		case (R.id.login):
+		case (R.id.login):		
 			// Login
-			Intent intent = new Intent();
-			String userId = studentId.getText().toString();
-			String password = passwordTxt.getText().toString();
-			UserControl logInfo = loginCheck(userId, password);
-			if (null == logInfo.getMessage() || "".equals(logInfo.getMessage()))
-			{
-				Toast.makeText(getApplicationContext(), "连接超时，请检查您的网络", 1)
-						.show();
-			} else if ("4".equals(logInfo.getMessage()))
-			{
-				// 4 : The type of user is student
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("logInfo", logInfo);
-				intent.putExtras(bundle);
-			} else
-			{
-				// wrong studentId or password
-				Toast.makeText(getApplicationContext(), "用户名或密码错误", 1).show();
-			}
+			MyThread myThread = new MyThread();
+		 	new Thread(myThread).start();
 			break;
 		case (R.id.fogetPassword):
 			// User forgot password
@@ -144,5 +129,53 @@ public class LoginActivity extends Activity implements OnClickListener
 		{
 		}
 		return userControl;
+	}
+	
+	@SuppressLint({ "HandlerLeak", "ShowToast" })
+	Handler handler = new Handler()
+	{
+		public void handleMessage(Message msg) 
+		 { 
+			 Bundle bundle =  msg.getData();
+			 String result = bundle.getString("result");
+			 Gson gson = new Gson();
+			 UserControl logInfo = new UserControl();
+			 logInfo = gson.fromJson(result, UserControl.class);
+			 if (null == logInfo.getMessage() || "".equals(logInfo.getMessage()))
+				{
+					Toast.makeText(getApplicationContext(), "连接超时，请检查您的网络", 1)
+							.show();
+				} else if ("4".equals(logInfo.getMessage()))
+				{
+					// 4 : The type of user is student
+					bundle.putSerializable("logInfo", logInfo);
+					Intent intent = new Intent();
+					intent.putExtras(bundle);
+				} else
+				{
+					// wrong studentId or password
+					Toast.makeText(getApplicationContext(), "用户名或密码错误", 1).show();
+				}
+		 }
+	};
+	
+	private class MyThread implements Runnable
+	{
+		@SuppressWarnings("static-access")
+		@Override
+		public void run()
+		{
+			AndroidToServer androidClient = new AndroidToServer();
+			String url = androidClient.BASE_URL + "login.do";
+			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			params.add(new BasicNameValuePair("userId", studentId.getText().toString()));
+			params.add(new BasicNameValuePair("password", passwordTxt.getText().toString()));
+			String result = androidClient.doPost(url, params);
+			Message msg = new Message();   
+            Bundle bundle = new Bundle();
+            bundle.putString("result", result);
+            msg.setData(bundle);
+            handler.sendMessage(msg);
+		}
 	}
 }

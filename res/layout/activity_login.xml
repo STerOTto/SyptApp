@@ -17,7 +17,7 @@
 		android:layout_gravity="center"
         android:src="@drawable/sytp_login" />
     <LinearLayout
-        android:layout_width="290dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="220dp"
@@ -35,7 +35,7 @@
             android:id="@+id/visitorLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
+            android:layout_marginLeft="120dp"
             android:layout_marginTop="20dp"
             android:text="@string/visitorLogin"
              />
