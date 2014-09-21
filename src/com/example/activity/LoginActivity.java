@@ -151,6 +151,8 @@ public class LoginActivity extends Activity implements OnClickListener
 					bundle.putSerializable("logInfo", logInfo);
 					Intent intent = new Intent();
 					intent.putExtras(bundle);
+					intent.setClass(LoginActivity.this, HomeActivity.class);
+					startActivity(intent);
 				} else
 				{
 					// wrong studentId or password
