@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- *************************左边菜单选项************************** -->
+    <string name="menuForgotPassword">忘记密码</string>
+    <string name="menuFeedBack">意见反馈</string>
+    <string name="menuDirection">使用说明</string>
+    <string name="menuLoginOut">退出登录</string> 
+</resources>

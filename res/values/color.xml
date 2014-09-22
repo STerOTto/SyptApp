@@ -18,7 +18,7 @@
     <color name="transparent_background">#50000000</color>
     <color name="text_gray">#4F4F4F</color>
     <color name="green">#00FF00</color>
-    <color name="grey21">#363636</color>
+    <color name="grey_black">#363636</color>
     <color name="gold">#b89766</color>
 
 </resources>
