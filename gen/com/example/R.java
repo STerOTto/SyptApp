@@ -58,38 +58,36 @@ public final class R {
         public static final int login_button_style=0x7f020008;
         public static final int login_down=0x7f020009;
         public static final int login_on=0x7f02000a;
-        public static final int out=0x7f02000b;
-        public static final int paper=0x7f02000c;
-        public static final int sytp_login=0x7f02000d;
-        public static final int write=0x7f02000e;
-        public static final int ww=0x7f02000f;
+        public static final int menu_setting=0x7f02000b;
+        public static final int out=0x7f02000c;
+        public static final int paper=0x7f02000d;
+        public static final int sytp_login=0x7f02000e;
+        public static final int write=0x7f02000f;
+        public static final int ww=0x7f020010;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0012;
-        public static final int fogetPassword=0x7f0a0001;
-        public static final int goRight=0x7f0a000a;
+        public static final int action_settings=0x7f0a0010;
+        public static final int fogetPassword=0x7f0a0002;
         public static final int homeLinearLayout=0x7f0a0000;
-        public static final int imgItem=0x7f0a0008;
-        public static final int leftMenuLinearLayout=0x7f0a000b;
-        public static final int listItem=0x7f0a0009;
-        public static final int login=0x7f0a0007;
-        public static final int menuDirectionLinearLayout=0x7f0a0010;
-        public static final int menuFeedBackLinearLayout=0x7f0a000f;
-        public static final int menuForgotPasswordLinearLayout=0x7f0a000e;
-        public static final int menuHead=0x7f0a000c;
-        public static final int menuLoginOutLinearLayout=0x7f0a0011;
-        public static final int menuUserName=0x7f0a000d;
-        public static final int passwordTxt=0x7f0a0006;
-        public static final int relativeLayout_login=0x7f0a0003;
-        public static final int relativeLayout_userId=0x7f0a0004;
-        public static final int studengtId=0x7f0a0005;
-        public static final int visitorLogin=0x7f0a0002;
+        public static final int leftMenuLinearLayout=0x7f0a0009;
+        public static final int login=0x7f0a0008;
+        public static final int menuDirectionLinearLayout=0x7f0a000e;
+        public static final int menuFeedBackLinearLayout=0x7f0a000d;
+        public static final int menuForgotPasswordLinearLayout=0x7f0a000c;
+        public static final int menuHead=0x7f0a000a;
+        public static final int menuLoginOutLinearLayout=0x7f0a000f;
+        public static final int menuSetting=0x7f0a0001;
+        public static final int menuUserName=0x7f0a000b;
+        public static final int passwordTxt=0x7f0a0007;
+        public static final int relativeLayout_login=0x7f0a0004;
+        public static final int relativeLayout_userId=0x7f0a0005;
+        public static final int studengtId=0x7f0a0006;
+        public static final int visitorLogin=0x7f0a0003;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_login=0x7f030001;
-        public static final int home_list_item_style=0x7f030002;
-        public static final int left_menu=0x7f030003;
+        public static final int left_menu=0x7f030002;
     }
     public static final class menu {
         public static final int login=0x7f090000;
