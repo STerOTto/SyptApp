@@ -38,7 +38,7 @@
         android:src="@drawable/black_line"
             />
     <RelativeLayout 
-        android:id="@+id/menuForgotPasswordLinearLayout"
+        android:id="@+id/menuForgotPasswordRelativeLayout"
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	>
@@ -74,7 +74,7 @@
         android:src="@drawable/black_line"
             />
     <RelativeLayout
-        android:id="@+id/menuFeedBackLinearLayout" 
+        android:id="@+id/menuFeedBackRelativeLayout" 
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	>
@@ -110,7 +110,7 @@
         android:src="@drawable/black_line"
             />
     <RelativeLayout
-        android:id="@+id/menuDirectionLinearLayout" 
+        android:id="@+id/menuDirectionRelativeLayout" 
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	>
@@ -146,7 +146,7 @@
         android:src="@drawable/black_line"
             />
     <RelativeLayout
-        android:id="@+id/menuLoginOutLinearLayout" 
+        android:id="@+id/menuLoginOutRelativeLayout" 
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	>
