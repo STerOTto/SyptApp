@@ -21,10 +21,9 @@
         android:layout_marginTop="10dp"
 		android:layout_gravity="center"
         android:src="@drawable/sytp_login" />
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
         android:layout_marginTop="220dp"
         android:orientation="horizontal" >
 
@@ -32,7 +31,8 @@
             android:id="@+id/fogetPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
             android:text="@string/fogetPassword"
             />
 
@@ -40,11 +40,11 @@
             android:id="@+id/visitorLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
             android:text="@string/visitorLogin"
              />
-    </LinearLayout>
+    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relativeLayout_login"
         android:layout_width="wrap_content"

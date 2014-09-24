@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    >
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
     android:orientation="vertical" >
     <RelativeLayout 
         android:layout_width="match_parent"
@@ -29,5 +35,86 @@
         android:layout_height="150dp"
         />
   	</LinearLayout>
+  	
     
 </LinearLayout>
+<RelativeLayout 
+  	    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+   		android:background="@drawable/bottom_menu_back"
+  	    >
+    <LinearLayout 
+        android:id="@+id/homeNewsLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        >
+        <ImageView 
+            android:id="@+id/homeBottomMenuNews"
+            android:contentDescription="@string/news"
+            android:layout_width="40dp"
+        	android:layout_height="40dp"
+        	android:src="@drawable/news"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textColor="@color/grey_black"
+        	android:text="@string/news"
+        	android:textSize="10sp"
+        	android:gravity="center"
+            />
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/homeLearnCenterLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        >
+        <ImageView 
+            android:id="@+id/homeBottomMenuLearnCenter"
+            android:contentDescription="@string/learnCenter"
+            android:layout_width="40dp"
+        	android:layout_height="40dp"
+        	android:src="@drawable/learn_center_black_white"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textColor="@color/grey_black"
+        	android:text="@string/learnCenter"
+        	android:textSize="10sp"
+        	android:gravity="center"
+            />
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/homeCommunityLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        >
+        <ImageView 
+            android:id="@+id/homeBottomMenuCommunity"
+            android:contentDescription="@string/community"
+            android:layout_width="40dp"
+        	android:layout_height="40dp"
+        	android:src="@drawable/community_black_white"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textColor="@color/grey_black"
+        	android:text="@string/community"
+        	android:textSize="10sp"
+        	android:gravity="center"
+            />
+    </LinearLayout>
+  	    
+  	</RelativeLayout>
+  	</RelativeLayout>

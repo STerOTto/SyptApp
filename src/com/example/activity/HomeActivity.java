@@ -21,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -37,6 +38,13 @@ public class HomeActivity extends Activity implements OnClickListener
 	private RelativeLayout menuFeedBackRelativeLayout;
 	private RelativeLayout menuDirectionRelativeLayout;
 	private RelativeLayout menuLoginOutRelativeLayout;
+	private LinearLayout homeNewsLinearLayout;
+	private LinearLayout homeLearnCenterLinearLayout;
+	private LinearLayout homeCommunityLinearLayout;
+	private ImageView homeBottomMenuNews;
+	private ImageView homeBottomMenuLearnCenter;
+	private ImageView homeBottomMenuCommunity;
+	
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -75,6 +83,15 @@ public class HomeActivity extends Activity implements OnClickListener
 		menuDirectionRelativeLayout.setOnClickListener(this);
 		menuLoginOutRelativeLayout = (RelativeLayout) findViewById(R.id.menuLoginOutRelativeLayout);
 		menuLoginOutRelativeLayout.setOnClickListener(this);
+		homeNewsLinearLayout = (LinearLayout) findViewById(R.id.homeNewsLinearLayout);
+		homeNewsLinearLayout.setOnClickListener(this);
+		homeLearnCenterLinearLayout = (LinearLayout) findViewById(R.id.homeLearnCenterLinearLayout);
+		homeLearnCenterLinearLayout.setOnClickListener(this);
+		homeCommunityLinearLayout = (LinearLayout) findViewById(R.id.homeCommunityLinearLayout);
+		homeCommunityLinearLayout.setOnClickListener(this);
+		homeBottomMenuNews = (ImageView) findViewById(R.id.homeBottomMenuNews);
+		homeBottomMenuLearnCenter = (ImageView) findViewById(R.id.homeBottomMenuLearnCenter);
+		homeBottomMenuCommunity = (ImageView) findViewById(R.id.homeBottomMenuCommunity);
 		//test
 		MyThread myThread = new MyThread();
 	 	new Thread(myThread).start();
@@ -102,6 +119,9 @@ public class HomeActivity extends Activity implements OnClickListener
 		case R.id.menuLoginOutRelativeLayout:
 			Toast.makeText(this, R.string.menuLoginOut, Toast.LENGTH_SHORT).show();
 			break;
+		case R.id.homeNewsLinearLayout:
+			homeBottomMenuNews.setBackgroundResource(R.drawable.news);
+			homeBottomMenuLearnCenter.setBackgroundResource(R.drawable.learn_center_black_white);
 		}
 	}
 	

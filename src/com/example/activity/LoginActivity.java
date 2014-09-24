@@ -101,6 +101,9 @@ public class LoginActivity extends Activity implements OnClickListener
 			break;
 		case (R.id.visitorLogin):
 			// User login as a visitor
+			Intent intent = new Intent();
+			intent.setClass(LoginActivity.this, HomeActivity.class);
+			startActivity(intent);
 			break;
 		default:
 			// Do nothing
@@ -138,6 +141,12 @@ public class LoginActivity extends Activity implements OnClickListener
 		 { 
 			 Bundle bundle =  msg.getData();
 			 String result = bundle.getString("result");
+			 if(null == result||"doPostError".equalsIgnoreCase(result)||"".equalsIgnoreCase(result))
+			 {
+				 Toast.makeText(getApplicationContext(), "连接超时，请检查您的网络", 1)
+					.show();
+				 return;
+			 }
 			 Gson gson = new Gson();
 			 UserControl logInfo = new UserControl();
 			 logInfo = gson.fromJson(result, UserControl.class);
