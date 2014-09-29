@@ -8,13 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class EmptyFragment extends Fragment
+public class LearnCenterFragment extends Fragment
 {
 	private View view;
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
-		view = inflater.inflate(R.layout.fragment_news, container, false);
+		view = inflater.inflate(R.layout.fragement_learn_center, container, false);
 		return view;
 	}
 }

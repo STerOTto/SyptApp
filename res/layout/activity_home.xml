@@ -29,8 +29,8 @@
         android:orientation="vertical"
         >
   	<fragment 
-  	    android:name="com.example.fragment.CarouselFragment"
-  	    android:id="@+id/carouselFragment"
+  	    android:name="com.example.fragment.EmptyFragment"
+  	    android:id="@+id/emptyFragment"
   	    android:layout_width="wrap_content"
         android:layout_height="150dp"
         />
@@ -59,9 +59,10 @@
         	android:src="@drawable/news"
             />
         <TextView 
+            android:id="@+id/newsTextView"
             android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
-        	android:textColor="@color/grey_black"
+        	android:textColor="@color/blue"
         	android:text="@string/news"
         	android:textSize="10sp"
         	android:gravity="center"
@@ -83,6 +84,7 @@
         	android:src="@drawable/learn_center_black_white"
             />
         <TextView 
+            android:id="@+id/learnCenterTextView"
             android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:textColor="@color/grey_black"
@@ -107,6 +109,7 @@
         	android:src="@drawable/community_black_white"
             />
         <TextView 
+            android:id="@+id/communityTextView"
             android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:textColor="@color/grey_black"

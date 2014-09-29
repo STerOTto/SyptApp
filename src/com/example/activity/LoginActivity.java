@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -84,7 +83,6 @@ public class LoginActivity extends Activity implements OnClickListener
 		my_Translate = AnimationUtils.loadAnimation(this, R.anim.my_translate);
 	}
 
-	@SuppressLint("ShowToast")
 	@Override
 	public void onClick(View view)
 	{
@@ -134,7 +132,6 @@ public class LoginActivity extends Activity implements OnClickListener
 		return userControl;
 	}
 	
-	@SuppressLint({ "HandlerLeak", "ShowToast" })
 	Handler handler = new Handler()
 	{
 		public void handleMessage(Message msg) 

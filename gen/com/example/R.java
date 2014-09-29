@@ -9,12 +9,16 @@ package com.example;
 
 public final class R {
     public static final class anim {
-        public static final int my_rotate=0x7f040000;
-        public static final int my_translate=0x7f040001;
-        public static final int push_left_in=0x7f040002;
-        public static final int push_left_out=0x7f040003;
-        public static final int push_right_in=0x7f040004;
-        public static final int push_right_out=0x7f040005;
+        public static final int fragment_back_left_in=0x7f040000;
+        public static final int fragment_back_right_out=0x7f040001;
+        public static final int fragment_push_left_in=0x7f040002;
+        public static final int fragment_push_left_out=0x7f040003;
+        public static final int my_rotate=0x7f040004;
+        public static final int my_translate=0x7f040005;
+        public static final int push_left_in=0x7f040006;
+        public static final int push_left_out=0x7f040007;
+        public static final int push_right_in=0x7f040008;
+        public static final int push_right_out=0x7f040009;
     }
     public static final class attr {
     }
@@ -82,38 +86,44 @@ public final class R {
         public static final int ww=0x7f02001c;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0019;
-        public static final int carouselFragment=0x7f0a0002;
-        public static final int carouselLinearLayout=0x7f0a0011;
-        public static final int fogetPassword=0x7f0a0009;
-        public static final int homeBottomMenuCommunity=0x7f0a0008;
-        public static final int homeBottomMenuLearnCenter=0x7f0a0006;
+        public static final int action_settings=0x7f0a001c;
+        public static final int carouselLinearLayout=0x7f0a0014;
+        public static final int communityTextView=0x7f0a000b;
+        public static final int emptyFragment=0x7f0a0002;
+        public static final int fogetPassword=0x7f0a000c;
+        public static final int homeBottomMenuCommunity=0x7f0a000a;
+        public static final int homeBottomMenuLearnCenter=0x7f0a0007;
         public static final int homeBottomMenuNews=0x7f0a0004;
-        public static final int homeCommunityLinearLayout=0x7f0a0007;
-        public static final int homeLearnCenterLinearLayout=0x7f0a0005;
+        public static final int homeCommunityLinearLayout=0x7f0a0009;
+        public static final int homeLearnCenterLinearLayout=0x7f0a0006;
         public static final int homeLinearLayout=0x7f0a0001;
         public static final int homeNewsLinearLayout=0x7f0a0003;
-        public static final int leftMenuLinearLayout=0x7f0a0012;
-        public static final int login=0x7f0a000f;
-        public static final int menuDirectionRelativeLayout=0x7f0a0017;
-        public static final int menuFeedBackRelativeLayout=0x7f0a0016;
-        public static final int menuForgotPasswordRelativeLayout=0x7f0a0015;
-        public static final int menuHead=0x7f0a0013;
-        public static final int menuLoginOutRelativeLayout=0x7f0a0018;
+        public static final int learnCenterTextView=0x7f0a0008;
+        public static final int leftMenuLinearLayout=0x7f0a0015;
+        public static final int login=0x7f0a0012;
+        public static final int menuDirectionRelativeLayout=0x7f0a001a;
+        public static final int menuFeedBackRelativeLayout=0x7f0a0019;
+        public static final int menuForgotPasswordRelativeLayout=0x7f0a0018;
+        public static final int menuHead=0x7f0a0016;
+        public static final int menuLoginOutRelativeLayout=0x7f0a001b;
         public static final int menuSetting=0x7f0a0000;
-        public static final int menuUserName=0x7f0a0014;
-        public static final int passwordTxt=0x7f0a000e;
-        public static final int relativeLayout_login=0x7f0a000b;
-        public static final int relativeLayout_userId=0x7f0a000c;
-        public static final int studengtId=0x7f0a000d;
-        public static final int viewFlipper=0x7f0a0010;
-        public static final int visitorLogin=0x7f0a000a;
+        public static final int menuUserName=0x7f0a0017;
+        public static final int newsTextView=0x7f0a0005;
+        public static final int passwordTxt=0x7f0a0011;
+        public static final int relativeLayout_login=0x7f0a000e;
+        public static final int relativeLayout_userId=0x7f0a000f;
+        public static final int studengtId=0x7f0a0010;
+        public static final int viewFlipper=0x7f0a0013;
+        public static final int visitorLogin=0x7f0a000d;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_login=0x7f030001;
-        public static final int fragment_carousel=0x7f030002;
-        public static final int left_menu=0x7f030003;
+        public static final int fragement_learn_center=0x7f030002;
+        public static final int fragment_community=0x7f030003;
+        public static final int fragment_empty=0x7f030004;
+        public static final int fragment_news=0x7f030005;
+        public static final int left_menu=0x7f030006;
     }
     public static final class menu {
         public static final int login=0x7f090000;

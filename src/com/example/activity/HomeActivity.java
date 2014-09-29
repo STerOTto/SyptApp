@@ -3,18 +3,14 @@ package com.example.activity;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.example.R;
-import com.example.util.GetHTML;
-import com.slidingmenu.lib.SlidingMenu;
-
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,17 +19,32 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.R;
+import com.example.R.color;
+import com.example.fragment.CommunityFragment;
+import com.example.fragment.LearnCenterFragment;
+import com.example.fragment.NewslFragment;
+import com.example.util.GetHTML;
+import com.slidingmenu.lib.SlidingMenu;
 
 /**
  * @author STerOTto
  *
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class HomeActivity extends Activity implements OnClickListener
+
+public class HomeActivity extends FragmentActivity implements OnClickListener
 {
+	// Fragment manage
+	private NewslFragment newslFragment;
+	private LearnCenterFragment learnCenterFragment;
+	private CommunityFragment communityFragment;
+	// Sliding menu
 	private SlidingMenu slidingMenu;
 	private ImageView menuSetting;
+	// UI widget
 	private RelativeLayout menuForgotPasswordRelativeLayout;
 	private RelativeLayout menuFeedBackRelativeLayout;
 	private RelativeLayout menuDirectionRelativeLayout;
@@ -44,7 +55,10 @@ public class HomeActivity extends Activity implements OnClickListener
 	private ImageView homeBottomMenuNews;
 	private ImageView homeBottomMenuLearnCenter;
 	private ImageView homeBottomMenuCommunity;
-	
+	private TextView newsTextView;
+	private TextView learnCenterTextView;
+	private TextView communityTextView;
+
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -52,11 +66,10 @@ public class HomeActivity extends Activity implements OnClickListener
 		setContentView(R.layout.activity_home);
 		initView();
 	}
-	
-	@SuppressWarnings("deprecation")
+
 	private void initSlidingMenu()
 	{
-		//SlidingMenu initialization
+		// SlidingMenu initialization
 		slidingMenu = new SlidingMenu(this);
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
 		slidingMenu.setShadowWidth(5);
@@ -67,12 +80,47 @@ public class HomeActivity extends Activity implements OnClickListener
 		slidingMenu.setMenu(R.layout.left_menu);
 		WindowManager wManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 		int screenWidth = wManager.getDefaultDisplay().getWidth();
-		slidingMenu.setBehindWidth((int) (screenWidth*0.6));
+		slidingMenu.setBehindWidth((int) (screenWidth * 0.6));
 	}
+
+	private void initFragment()
+	{
+		// Fragment initialization
+		newslFragment = new NewslFragment();
+		learnCenterFragment = new LearnCenterFragment();
+		communityFragment = new CommunityFragment();
+
+	}
+
+	private void replaceFragment(Fragment newFragment)
+	{
+		FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+				.beginTransaction();
+		if (!newFragment.isAdded())
+		{
+			try
+			{
+				fragmentTransaction.replace(R.id.emptyFragment, newFragment);
+				fragmentTransaction.addToBackStack(null);
+				fragmentTransaction.commit();
+
+			} catch (Exception e)
+			{
+				// TODO: handle exception
+				// AppConstants.printLog(e.getMessage());
+				Log.e("errer", e.toString());
+			}
+		} else
+			fragmentTransaction.show(newFragment);
+
+	}
+
 	private void initView()
 	{
-		//UI initialization
+		// UI initialization
 		initSlidingMenu();
+		initFragment();
+		replaceFragment(newslFragment);
 		menuSetting = (ImageView) findViewById(R.id.menuSetting);
 		menuSetting.setOnClickListener(this);
 		menuForgotPasswordRelativeLayout = (RelativeLayout) findViewById(R.id.menuForgotPasswordRelativeLayout);
@@ -92,70 +140,106 @@ public class HomeActivity extends Activity implements OnClickListener
 		homeBottomMenuNews = (ImageView) findViewById(R.id.homeBottomMenuNews);
 		homeBottomMenuLearnCenter = (ImageView) findViewById(R.id.homeBottomMenuLearnCenter);
 		homeBottomMenuCommunity = (ImageView) findViewById(R.id.homeBottomMenuCommunity);
-		//test
+		newsTextView = (TextView) findViewById(R.id.newsTextView);
+		learnCenterTextView = (TextView) findViewById(R.id.learnCenterTextView);
+		communityTextView = (TextView) findViewById(R.id.communityTextView);
+		// test
 		MyThread myThread = new MyThread();
-	 	new Thread(myThread).start();
-		
+		new Thread(myThread).start();
+
 	}
 
 	@Override
 	public void onClick(View view)
 	{
-		//Events of click
-		switch(view.getId())
+		// Events of click
+		switch (view.getId())
 		{
 		case R.id.menuSetting:
 			slidingMenu.toggle();
 			break;
 		case R.id.menuForgotPasswordRelativeLayout:
-			Toast.makeText(this, R.string.menuForgotPassword, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.menuForgotPassword,
+					Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.menuFeedBackRelativeLayout:
-			Toast.makeText(this, R.string.menuFeedBack, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.menuFeedBack, Toast.LENGTH_SHORT)
+					.show();
 			break;
 		case R.id.menuDirectionRelativeLayout:
-			Toast.makeText(this, R.string.menuDirection, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.menuDirection, Toast.LENGTH_SHORT)
+					.show();
 			break;
 		case R.id.menuLoginOutRelativeLayout:
-			Toast.makeText(this, R.string.menuLoginOut, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.menuLoginOut, Toast.LENGTH_SHORT)
+					.show();
 			break;
 		case R.id.homeNewsLinearLayout:
-			homeBottomMenuNews.setBackgroundResource(R.drawable.news);
-			homeBottomMenuLearnCenter.setBackgroundResource(R.drawable.learn_center_black_white);
+			homeBottomMenuNews.setImageResource(R.drawable.news);
+			homeBottomMenuLearnCenter
+					.setImageResource(R.drawable.learn_center_black_white);
+			homeBottomMenuCommunity
+					.setImageResource(R.drawable.community_black_white);
+			newsTextView.setTextColor(Color.BLUE);
+			learnCenterTextView.setTextColor(color.grey_black);
+			communityTextView.setTextColor(color.grey_black);
+			replaceFragment(newslFragment);
+			break;
+		case R.id.homeLearnCenterLinearLayout:
+			homeBottomMenuNews.setImageResource(R.drawable.news_black_white);
+			homeBottomMenuLearnCenter.setImageResource(R.drawable.learn_center);
+			homeBottomMenuCommunity
+					.setImageResource(R.drawable.community_black_white);
+			newsTextView.setTextColor(color.grey_black);
+			learnCenterTextView.setTextColor(Color.BLUE);
+			communityTextView.setTextColor(color.grey_black);
+			replaceFragment(learnCenterFragment);
+			break;
+		case R.id.homeCommunityLinearLayout:
+			homeBottomMenuNews.setImageResource(R.drawable.news_black_white);
+			homeBottomMenuLearnCenter
+					.setImageResource(R.drawable.learn_center_black_white);
+			homeBottomMenuCommunity.setImageResource(R.drawable.community);
+			newsTextView.setTextColor(color.grey_black);
+			learnCenterTextView.setTextColor(color.grey_black);
+			communityTextView.setTextColor(Color.BLUE);
+			replaceFragment(communityFragment);
+			break;
 		}
 	}
-	
-	@SuppressLint("HandlerLeak")
+
 	Handler handler = new Handler()
 	{
 		public void handleMessage(Message msg)
 		{
-			Bundle bundle =  msg.getData();
+			Bundle bundle = msg.getData();
 			String result = bundle.getString("result");
 			String regex = "<li><a href=\"(.*?)\" title=\"(.*?)\".*?</li>";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(result);
-			while(matcher.find()){
+			while (matcher.find())
+			{
 				Log.i("Title", matcher.group(2));
 				Log.i("Url", matcher.group(1).toString());
 			}
-		}	
+		}
 	};
-	
+
 	private class MyThread implements Runnable
 	{
 		@SuppressWarnings("static-access")
 		@Override
 		public void run()
 		{
-			String url ="http://news.bjtu.edu.cn/zongheyaowen/" ;	
+			String url = "http://news.bjtu.edu.cn/zongheyaowen/";
 			String result = GetHTML.getInstance().getHtml(url);
-			Message msg = new Message();   
-            Bundle bundle = new Bundle();
-            bundle.putString("result", result);
-            msg.setData(bundle);
-            handler.sendMessage(msg);
+			Message msg = new Message();
+			Bundle bundle = new Bundle();
+			bundle.putString("result", result);
+			msg.setData(bundle);
+			handler.sendMessage(msg);
 		}
-		
+
 	}
+
 }

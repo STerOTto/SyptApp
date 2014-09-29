@@ -2,17 +2,16 @@ package com.example.fragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import com.example.R;
-
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.ActionBar.LayoutParams;
-import android.app.Fragment;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.LayoutInflater;
@@ -24,10 +23,18 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
+import android.app.ActionBar.LayoutParams;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class CarouselFragment extends Fragment implements OnGestureListener
+import com.example.R;
+import com.example.util.GetHTML;
+
+
+public class NewslFragment extends Fragment implements OnGestureListener
 {
+	private static final String BASE_URL = "http://bjtu.edu.cn/";
+	
+	private static ScheduledThreadPoolExecutor stpe = null;
+	
 	private View view;
 	private GestureDetector gestureDetector = null;
 	private ViewFlipper viewFlipper = null;
@@ -40,14 +47,22 @@ public class CarouselFragment extends Fragment implements OnGestureListener
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
-		view = inflater.inflate(R.layout.fragment_carousel, container, false);
+		view = inflater.inflate(R.layout.fragment_news, container, false);
 		initView();
 		return view;
+	}
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		stpe.shutdown();
 	}
 
 	@SuppressWarnings("deprecation")
 	private void initView()
 	{
+		
 		linearLayout = (LinearLayout) view
 				.findViewById(R.id.carouselLinearLayout);
 		linearLayout.getBackground().setAlpha(100);// 设置背景透明
@@ -84,33 +99,25 @@ public class CarouselFragment extends Fragment implements OnGestureListener
 			linearLayout.addView(iv);
 			imgviewList.add(iv);
 		}
-		// 自动播放banner图片启动
-		AutoFlip.start();
+		// 自动播放banner图片启动,线程池
+		stpe = new ScheduledThreadPoolExecutor(5);
+		stpe.scheduleWithFixedDelay(AutoFlip,3, 3, TimeUnit.SECONDS);
 	}
 
 	Thread AutoFlip = new Thread()
 	{
 		public void run()
 		{
-			while (isRun)
+			if (isRun)
 			{
-				try
-				{
-					Thread.sleep(5000);
-					Message msg = new Message();
-					msg.what = SHOW_NEXT;
-					handler.sendMessage(msg);
-				} catch (InterruptedException e)
-				{
-					isRun = false;
-					e.printStackTrace();
-				}
+				Message msg = new Message();
+				msg.what = SHOW_NEXT;
+				handlerImg.sendMessage(msg);
 			}
 		}
 	};
 
-	@SuppressLint("HandlerLeak")
-	Handler handler = new Handler()
+	Handler handlerImg = new Handler()
 	{
 		public void handleMessage(Message msg)
 		{
@@ -119,6 +126,37 @@ public class CarouselFragment extends Fragment implements OnGestureListener
 				showNextView();
 			}
 		}
+	};
+	
+	private class getNewsThread implements Runnable
+	{
+		@SuppressWarnings("static-access")
+		@Override
+		public void run()
+		{
+			String result = GetHTML.getInstance().getHtml(BASE_URL);
+			Message msg = new Message();   
+            Bundle bundle = new Bundle();
+            bundle.putString("result", result);
+            msg.setData(bundle);
+            handlerNews.sendMessage(msg);
+		}
+	}
+	
+	Handler handlerNews = new Handler()
+	{
+		public void handleMessage(Message msg)
+		{
+			Bundle bundle =  msg.getData();
+			String result = bundle.getString("result");
+			String regex = "<li><a href=\"(.*?)\" title=\"(.*?)\".*?</li>";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(result);
+			while(matcher.find()){
+				Log.i("Title", matcher.group(2));
+				Log.i("Url", matcher.group(1).toString());
+			}
+		}	
 	};
 
 	public void showNextView()
