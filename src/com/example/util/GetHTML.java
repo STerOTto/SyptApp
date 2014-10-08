@@ -49,7 +49,6 @@ public class GetHTML
 			}
 			br.close(); // 关闭
 			isr.close(); // 关闭
-			Log.d("HTML", html.toString());
 			return html.toString(); // 返回此序列中数据的字符串表示形式。
 		} catch (Exception e)
 		{

@@ -1,19 +1,15 @@
 package com.example.activity;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -27,7 +23,6 @@ import com.example.R.color;
 import com.example.fragment.CommunityFragment;
 import com.example.fragment.LearnCenterFragment;
 import com.example.fragment.NewslFragment;
-import com.example.util.GetHTML;
 import com.slidingmenu.lib.SlidingMenu;
 
 /**
@@ -79,6 +74,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener
 		slidingMenu.setMode(SlidingMenu.LEFT);
 		slidingMenu.setMenu(R.layout.left_menu);
 		WindowManager wManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+		@SuppressWarnings("deprecation")
 		int screenWidth = wManager.getDefaultDisplay().getWidth();
 		slidingMenu.setBehindWidth((int) (screenWidth * 0.6));
 	}
@@ -143,10 +139,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener
 		newsTextView = (TextView) findViewById(R.id.newsTextView);
 		learnCenterTextView = (TextView) findViewById(R.id.learnCenterTextView);
 		communityTextView = (TextView) findViewById(R.id.communityTextView);
-		// test
-		MyThread myThread = new MyThread();
-		new Thread(myThread).start();
-
 	}
 
 	@Override
@@ -207,39 +199,20 @@ public class HomeActivity extends FragmentActivity implements OnClickListener
 			break;
 		}
 	}
-
-	Handler handler = new Handler()
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
-		public void handleMessage(Message msg)
+		switch(keyCode)
 		{
-			Bundle bundle = msg.getData();
-			String result = bundle.getString("result");
-			String regex = "<li><a href=\"(.*?)\" title=\"(.*?)\".*?</li>";
-			Pattern pattern = Pattern.compile(regex);
-			Matcher matcher = pattern.matcher(result);
-			while (matcher.find())
-			{
-				Log.i("Title", matcher.group(2));
-				Log.i("Url", matcher.group(1).toString());
-			}
+		case KeyEvent.KEYCODE_BACK:
+			this.finish();
+			return true;
+		case KeyEvent.KEYCODE_MENU:
+			slidingMenu.toggle();
+			return true;
+		default :
+			return false;
 		}
-	};
-
-	private class MyThread implements Runnable
-	{
-		@SuppressWarnings("static-access")
-		@Override
-		public void run()
-		{
-			String url = "http://news.bjtu.edu.cn/zongheyaowen/";
-			String result = GetHTML.getInstance().getHtml(url);
-			Message msg = new Message();
-			Bundle bundle = new Bundle();
-			bundle.putString("result", result);
-			msg.setData(bundle);
-			handler.sendMessage(msg);
-		}
-
 	}
-
 }
