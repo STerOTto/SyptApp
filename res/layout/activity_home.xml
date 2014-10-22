@@ -11,15 +11,22 @@
     android:orientation="vertical" >
     <RelativeLayout 
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@color/grey_black"
         >
         <ImageView 
             android:contentDescription="@string/hello_world"
             android:id="@+id/menuSetting"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:src="@drawable/menu_setting"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_centerInParent="true"
+            android:textColor="@color/white"
+    		android:text="思源移动学习平台"
             />
     </RelativeLayout>
     <LinearLayout 
@@ -29,10 +36,10 @@
         android:orientation="vertical"
         >
   	<fragment 
-  	    android:name="com.example.fragment.EmptyFragment"
+  	    android:name="com.sytp.fragment.EmptyFragment"
   	    android:id="@+id/emptyFragment"
   	    android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         />
   	</LinearLayout>
   	

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/grey_black"
+        >
+        <ImageView 
+            android:id="@+id/go_back_course_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/go_back"
+            tools:ignore="ContentDescription"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:text="课程中心"
+            />
+    </RelativeLayout>
+    <ListView 
+        android:id="@+id/fragment_lv_course_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ></ListView>
+
+</LinearLayout>

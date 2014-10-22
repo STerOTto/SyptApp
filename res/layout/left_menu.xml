@@ -44,10 +44,11 @@
     	>
     <ImageView   
         android:contentDescription="@string/menuForgotPassword"  
-        android:layout_width="23dp" 
-        android:layout_height="23dp"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
         android:src="@drawable/lock"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         /> 
     <TextView   
         android:layout_width="wrap_content"  
@@ -59,10 +60,11 @@
         />  
     <ImageView 
         android:contentDescription="@string/menuForgotPassword"
-        android:layout_width="23dp" 
-        android:layout_height="23dp"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
         android:src="@drawable/go_right"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         />
     </RelativeLayout> 
     
@@ -80,10 +82,11 @@
     	>
     <ImageView    
         android:contentDescription="@string/menuFeedBack"  
-        android:layout_width="23dp" 
-        android:layout_height="23dp"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
         android:src="@drawable/write"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         /> 
     <TextView    
         android:layout_width="wrap_content"  
@@ -95,10 +98,11 @@
         />  
     <ImageView
         android:contentDescription="@string/menuFeedBack"  
-        android:layout_width="23dp" 
-        android:layout_height="23dp"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
         android:src="@drawable/go_right"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         />
     </RelativeLayout> 
     
@@ -116,10 +120,11 @@
     	>
     <ImageView    
         android:contentDescription="@string/menuDirection"  
-        android:layout_width="23dp" 
-        android:layout_height="23dp"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
         android:src="@drawable/paper"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         /> 
     <TextView    
         android:layout_width="wrap_content"  
@@ -131,10 +136,11 @@
         />  
     <ImageView
         android:contentDescription="@string/menuDirection"  
-        android:layout_width="23dp" 
-        android:layout_height="23dp"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
         android:src="@drawable/go_right"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         />
     </RelativeLayout> 
     
@@ -152,10 +158,11 @@
     	>
     <ImageView    
         android:contentDescription="@string/menuLoginOut"  
-        android:layout_width="23dp" 
-        android:layout_height="23dp"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
         android:src="@drawable/out"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         /> 
     <TextView    
         android:layout_width="wrap_content"  
@@ -167,10 +174,11 @@
         />  
     <ImageView
         android:contentDescription="@string/menuLoginOut"  
-        android:layout_width="23dp" 
-        android:layout_height="23dp"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
         android:src="@drawable/go_right"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         />
     </RelativeLayout> 
 
