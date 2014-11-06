@@ -10,16 +10,18 @@ public class Node
 {
 	// 用于展示数据的string变量
 	private String name;
-	// 放置子对�?
+	// 放置子对�?
 	private List<Node> childNodes;
-	// 标记是否选中状�??
+	// 标记是否选中状�??
 	private boolean isSelected = false;
 	// 缩进格数
 	private int retractNum = 0;
-	// 父对�?
+	// 父对�?
 	private Node superNode;
-	// 记录当前位置的对�?
+	// 记录当前位置的对�?
 	private String position;
+	// 链接
+	private String url;
 
 	public Node getSuperNode()
 	{
@@ -86,4 +88,14 @@ public class Node
 		this.childNodes = childNodes;
 	}
 
+	public String getUrl()
+	{
+		return url;
+	}
+
+	public void setUrl(String url)
+	{
+		this.url = url;
+	}
+	
 }

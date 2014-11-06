@@ -136,9 +136,7 @@ public class LoginActivity extends Activity implements OnClickListener
 				} else if ("4".equals(logInfo.getMessage()))
 				{
 					// 4 : The type of user is student
-//					bundle.putSerializable("logInfo", logInfo);
 					Intent intent = new Intent();
-//					intent.putExtras(bundle);
 					intent.setClass(LoginActivity.this, HomeActivity.class);
 					startActivity(intent);
 					SyptApplication syptApplication = (SyptApplication) getApplication();

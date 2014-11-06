@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 import com.sytp.R;
 import com.sytp.activity.CourseCenterActivity;
 import com.sytp.config.SyptApplication;
-import com.sytp.constant.Constant;
 import com.sytp.entity.StudentCourse;
 import com.sytp.entity.UserControl;
 import com.sytp.http.AndroidToServer;
@@ -120,10 +119,9 @@ public class LearnCenterFragment extends Fragment
 							int position, long id)
 					{
 						Intent intent = new Intent();
-						intent.putExtra("url", Constant.SY_BASE_URL
-								+ "enterCourse.do?studentCourseId="
-								+ userControl.getSc().get(position)
-										.getStudentCourseId());
+						Bundle bundle = new Bundle();
+						bundle.putSerializable("studentCourse", userControl.getSc().get(position));
+						intent.putExtras(bundle);
 						intent.setClass(getActivity(), CourseCenterActivity.class);
 						startActivity(intent);
 					}
